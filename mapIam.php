@@ -1,18 +1,26 @@
 <?php
+$latitude = ""; // Initialize latitude and longitude variables
+$longitude = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $latitude = $_POST["latitude"];
-    $longitude = $_POST["longitude"];;
+    if(isset($_POST["latitude"]) && isset($_POST["longitude"])) {
+        $latitude = $_POST["latitude"];
+        $longitude = $_POST["longitude"];
+    }
 }
+
 if(isset($_POST["navigate"])){
     // รับค่าสถานทีสถานที่ 2 จากฟอร์ม
     $location1 = $_POST['location1'];
     $location2 = $_POST['location2'];
     
     // นำทางผู้ใช้ไปยังสถานที่ปลายทาง (ตัวอย่างเช่นการแสดงผลในที่นี้เป็นการสร้างลิงก์ URL)
-    echo "<p>กำลังนำทางจาก $location1 ไปยัง $location2 ไปยัง</p>";
-    echo "<a href='https://www.google.com/maps/dir/$location1/$location2'>ดูเส้นทางบน Google Maps</a>";
+    echo "<p>กำลังนำทางจาก $location1 ไปยัง $location2 </p>";
+    echo "<a href='https://www.google.com/maps/dir/$location1/$location2'> คลิ๊ก ดูเส้นทางบน Google Maps </a>";
 }
+
 ?>
+
 
 
 <!DOCTYPE html>
